@@ -6,6 +6,9 @@ record:
     delete: "user.data.admin === true"
     listen: "user.data.admin === true"
 
+  feeds/$userid:
+    read: "$userid == user.data.user_id || user.data.admin === true"
+
   settings/$userid:
     read: "$userid == user.data.user_id || user.data.admin === true"
 
@@ -54,9 +57,6 @@ event:
     publish: "user.data.admin === true"
     subscribe: "user.data.admin === true"
     listen: "user.data.admin === true"
-
-  settings/$userid:
-    publish: "$userid == user.data.user_id || user.data.admin === true"
 
 rpc:
   "*":
