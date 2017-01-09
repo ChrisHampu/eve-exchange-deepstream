@@ -33,6 +33,9 @@ record:
   user_orders/$userid:
     read: "$userid == user.data.user_id || user.data.admin === true"
 
+  user_assets/$userid:
+    read: "$userid == user.data.user_id || user.data.admin === true"
+
   portfolios/$userid:
     read: "$userid == user.data.user_id || user.data.admin === true"
 
