@@ -6,6 +6,9 @@ record:
     delete: "user.data.admin === true"
     listen: "user.data.admin === true"
 
+  tickers:
+    read: "user.isAuthenticated === true || user.data.admin === true"
+
   feeds/$userid:
     read: "$userid == user.data.user_id || user.data.admin === true"
 
