@@ -58,11 +58,18 @@ record:
     create: "user.isAuthenticated === true || user.data.admin === true"
     read: "user.isAuthenticated === true || user.data.admin === true"
 
+  alerts/$userid:
+    read: "$userid == user.data.user_id || user.data.admin === true"
+
 event:
   "*":
     publish: "user.data.admin === true"
     subscribe: "user.data.admin === true"
     listen: "user.data.admin === true"
+
+  show_alert/$userid:
+    publish: "user.data.admin === true"
+    subscribe: "$userid == user.data.user_id || user.data.admin === true"
 
 rpc:
   "*":
@@ -71,4 +78,4 @@ rpc:
 
 presence:
   "*":
-    allow: false
+    allow: "user.data.admin === true"
